@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forkd — where developers connect</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ========== AUTH SCREEN ========== -->
+  <div id="auth-screen" class="screen active">
+    <div class="auth-bg">
+      <div class="auth-grid" id="auth-grid"></div>
+    </div>
+    <div class="auth-container">
+      <div class="auth-logo">
+        <div class="logo-mark">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="10" r="6" fill="#00FFB2"/>
+            <circle cx="8"  cy="28" r="5" fill="#00FFB2" opacity="0.6"/>
+            <circle cx="28" cy="28" r="5" fill="#00FFB2" opacity="0.6"/>
+            <line x1="18" y1="16" x2="8"  y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.5"/>
+            <line x1="18" y1="16" x2="28" y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.5"/>
+            <line x1="8"  y1="23" x2="28" y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.3"/>
+          </svg>
+        </div>
+        <span class="logo-wordmark">forkd</span>
+      </div>
+      <p class="auth-tagline">Where developers commit to community.</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="login">Sign in</button>
+        <button class="auth-tab" data-tab="signup">Create account</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="tab-login" class="auth-panel active">
+        <button class="btn-github" id="github-login-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Continue with GitHub
+        </button>
+        <div class="divider"><span>or sign in with email</span></div>
+        <input type="email" class="field-input" placeholder="Email address" id="login-email" />
+        <input type="password" class="field-input" placeholder="Password" id="login-pass" />
+        <button class="btn-primary full" id="login-btn">Sign in</button>
+        <a href="#" class="auth-link">Forgot password?</a>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="tab-signup" class="auth-panel">
+        <button class="btn-github" id="github-signup-btn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Sign up with GitHub
+        </button>
+        <div class="divider"><span>or create with email</span></div>
+        <input type="text" class="field-input" placeholder="Full name" id="signup-name" />
+        <input type="text" class="field-input" placeholder="Username (e.g. @devguru)" id="signup-username" />
+        <input type="email" class="field-input" placeholder="Email address" id="signup-email" />
+        <input type="password" class="field-input" placeholder="Password" id="signup-pass" />
+        <button class="btn-primary full" id="signup-btn">Create account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== APP SHELL ========== -->
+  <div id="app-screen" class="screen">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-logo">
+          <div class="logo-mark sm">
+            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
+              <circle cx="18" cy="10" r="6" fill="#00FFB2"/>
+              <circle cx="8"  cy="28" r="5" fill="#00FFB2" opacity="0.6"/>
+              <circle cx="28" cy="28" r="5" fill="#00FFB2" opacity="0.6"/>
+              <line x1="18" y1="16" x2="8"  y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.5"/>
+              <line x1="18" y1="16" x2="28" y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.5"/>
+              <line x1="8"  y1="23" x2="28" y2="23" stroke="#00FFB2" stroke-width="2" opacity="0.3"/>
+            </svg>
+          </div>
+          <span class="logo-wordmark">forkd</span>
+        </div>
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-view="feed">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Feed</span>
+          </a>
+          <a href="#" class="nav-item" data-view="explore">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Explore</span>
+          </a>
+          <a href="#" class="nav-item" data-view="notifications">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            <span>Notifications</span>
+            <span class="notif-dot"></span>
+          </a>
+          <a href="#" class="nav-item" data-view="messages">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>Messages</span>
+          </a>
+          <a href="#" class="nav-item" data-view="profile">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile</span>
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <button class="btn-primary full compose-btn" id="compose-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          New Post
+        </button>
+        <div class="sidebar-user" id="sidebar-user">
+          <div class="avatar sm" id="sidebar-avatar">AK</div>
+          <div class="sidebar-user-info">
+            <span class="sidebar-name" id="sidebar-name">Alex Kim</span>
+            <span class="sidebar-handle" id="sidebar-handle">@alexkim</span>
+          </div>
+          <button class="logout-btn" id="logout-btn" title="Sign out">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+      <!-- FEED VIEW -->
+      <section id="view-feed" class="view active">
+        <div class="view-header">
+          <h2 class="view-title">Feed</h2>
+          <div class="feed-tabs">
+            <button class="feed-tab active">For You</button>
+            <button class="feed-tab">Following</button>
+            <button class="feed-tab">Trending</button>
+          </div>
+        </div>
+        <div id="feed-posts" class="posts-list"></div>
+      </section>
+
+      <!-- EXPLORE VIEW -->
+      <section id="view-explore" class="view">
+        <div class="view-header">
+          <h2 class="view-title">Explore</h2>
+          <div class="explore-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Search developers, repos, topics..." id="explore-search" />
+          </div>
+        </div>
+        <div class="explore-tags">
+          <span class="explore-tag active">#all</span>
+          <span class="explore-tag">#javascript</span>
+          <span class="explore-tag">#rust</span>
+          <span class="explore-tag">#python</span>
+          <span class="explore-tag">#devops</span>
+          <span class="explore-tag">#opensource</span>
+          <span class="explore-tag">#webdev</span>
+          <span class="explore-tag">#ai</span>
+        </div>
+        <div class="explore-grid" id="explore-grid"></div>
+      </section>
+
+      <!-- NOTIFICATIONS VIEW -->
+      <section id="view-notifications" class="view">
+        <div class="view-header"><h2 class="view-title">Notifications</h2></div>
+        <div id="notif-list" class="notif-list"></div>
+      </section>
+
+      <!-- MESSAGES VIEW -->
+      <section id="view-messages" class="view">
+        <div class="view-header"><h2 class="view-title">Messages</h2></div>
+        <div class="messages-layout">
+          <div class="messages-list" id="messages-list"></div>
+          <div class="message-thread" id="message-thread">
+            <div class="thread-empty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.3"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <p>Select a conversation</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROFILE VIEW -->
+      <section id="view-profile" class="view">
+        <div class="profile-header-banner"></div>
+        <div class="profile-info">
+          <div class="profile-top-row">
+            <div class="avatar xl" id="profile-avatar">AK</div>
+            <div class="profile-actions">
+              <button class="btn-outline" id="connect-github-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                Connect GitHub
+              </button>
+              <button class="btn-primary" id="edit-profile-btn">Edit Profile</button>
+            </div>
+          </div>
+          <div class="profile-details">
+            <h2 class="profile-name" id="profile-name">Alex Kim</h2>
+            <span class="profile-handle" id="profile-handle">@alexkim</span>
+            <p class="profile-bio" id="profile-bio">Full-stack engineer · building tools that don't suck · open source contributor</p>
+            <div class="profile-langs">
+              <span class="lang-tag js">JavaScript</span>
+              <span class="lang-tag py">Python</span>
+              <span class="lang-tag rs">Rust</span>
+            </div>
+            <div class="profile-stats">
+              <div class="stat"><span class="stat-num" id="profile-posts-count">0</span><span class="stat-label">Posts</span></div>
+              <div class="stat"><span class="stat-num">248</span><span class="stat-label">Followers</span></div>
+              <div class="stat"><span class="stat-num">91</span><span class="stat-label">Following</span></div>
+              <div class="stat"><span class="stat-num" id="profile-repos">—</span><span class="stat-label">Repos</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="profile-tabs">
+          <button class="profile-tab active" data-ptab="posts">Posts</button>
+          <button class="profile-tab" data-ptab="repos">Repositories</button>
+          <button class="profile-tab" data-ptab="activity">Activity</button>
+        </div>
+        <div id="profile-posts" class="posts-list"></div>
+        <div id="profile-repos-panel" class="repos-grid hidden"></div>
+        <div id="profile-activity" class="activity-panel hidden"></div>
+      </section>
+
+    </main>
+
+    <!-- RIGHT PANEL -->
+    <aside id="right-panel">
+      <div class="right-section">
+        <h3 class="right-title">Trending Topics</h3>
+        <div class="trending-list" id="trending-list"></div>
+      </div>
+      <div class="right-section">
+        <h3 class="right-title">Who to Follow</h3>
+        <div class="suggestions-list" id="suggestions-list"></div>
+      </div>
+      <div class="right-section github-widget hidden" id="github-widget">
+        <div class="github-widget-header">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <h3 class="right-title" style="margin:0">GitHub</h3>
+        </div>
+        <div id="github-stats-panel"></div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- COMPOSE MODAL -->
+  <div id="compose-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Create Post</h3>
+        <button class="modal-close" id="close-compose">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="compose-user">
+          <div class="avatar sm" id="compose-avatar">AK</div>
+          <div>
+            <div class="compose-name" id="compose-name">Alex Kim</div>
+            <select class="compose-audience">
+              <option>Public</option>
+              <option>Followers only</option>
+            </select>
+          </div>
+        </div>
+        <textarea id="compose-text" placeholder="What are you building? Share code, ideas, questions..." rows="5"></textarea>
+        <div class="compose-code-toggle">
+          <button class="compose-tool active" data-tool="text">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Text
+          </button>
+          <button class="compose-tool" data-tool="code">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Code
+          </button>
+          <button class="compose-tool" data-tool="repo">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3zM3 9h18M9 21V9"/></svg>
+            Repo
+          </button>
+        </div>
+        <div id="code-block-area" class="hidden">
+          <select class="lang-select" id="lang-select">
+            <option>JavaScript</option><option>TypeScript</option><option>Python</option>
+            <option>Rust</option><option>Go</option><option>Java</option><option>C++</option><option>SQL</option>
+          </select>
+          <textarea id="compose-code" class="code-textarea" placeholder="// paste your code here..." rows="6"></textarea>
+        </div>
+        <div class="compose-tags-row">
+          <input type="text" class="field-input sm" placeholder="#tag (e.g. #javascript)" id="compose-tags" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <span class="char-count" id="char-count">0 / 500</span>
+        <button class="btn-primary" id="publish-btn">Publish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GITHUB CONNECT MODAL -->
+  <div id="github-modal" class="modal-overlay hidden">
+    <div class="modal sm-modal">
+      <div class="modal-header">
+        <h3>Connect GitHub</h3>
+        <button class="modal-close" id="close-github-modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Link your GitHub account to showcase your repos, contributions, and commit activity on your profile.</p>
+        <input type="text" class="field-input" placeholder="GitHub username (e.g. torvalds)" id="github-username-input" />
+        <ul class="perms-list">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB2" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Read public repos & stars</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB2" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Show contribution graph</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00FFB2" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Display pinned repositories</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" id="cancel-github">Cancel</button>
+        <button class="btn-github" id="confirm-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Connect GitHub
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div id="edit-profile-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>Edit Profile</h3>
+        <button class="modal-close" id="close-edit-profile">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label class="field-label">Display Name</label>
+        <input type="text" class="field-input" id="ep-name" />
+        <label class="field-label">Username</label>
+        <input type="text" class="field-input" id="ep-username" />
+        <label class="field-label">Bio</label>
+        <textarea class="field-input" id="ep-bio" rows="3"></textarea>
+        <label class="field-label">Primary Languages</label>
+        <input type="text" class="field-input" id="ep-langs" placeholder="e.g. JavaScript, Python, Rust" />
+        <label class="field-label">Website</label>
+        <input type="text" class="field-input" id="ep-website" placeholder="https://yoursite.dev" />
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" id="cancel-edit-profile">Cancel</button>
+        <button class="btn-primary" id="save-profile-btn">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
